@@ -8,8 +8,8 @@ jobs:
   build:
     runs-on: windows-latest
     
-    env:
-      SERVICE_APP_KEY: ${{ secrets.SERVICE_APP_KEY }}
+#     env:
+#       SERVICE_APP_KEY: ${{ secrets.SERVICE_APP_KEY }}
 
     steps:
       - uses: actions/checkout@v2 
