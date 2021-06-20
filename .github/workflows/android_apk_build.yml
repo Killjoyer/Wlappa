@@ -1,0 +1,30 @@
+name: Build Android apk
+
+on:
+  push:
+    branches: [ master ]
+
+jobs:
+  build:
+    runs-on: windows-latest
+    
+    env:
+      SERVICE_APP_KEY: ${{ secrets.SERVICE_APP_KEY }}
+
+    steps:
+      - uses: actions/checkout@v2
+
+      - name: Setup MSBuild
+        uses: microsoft/setup-msbuild@v1.0.0        
+
+      - name: Build Solution
+        run: msbuild ./Wlappa.sln /restore /p:Configuration=Release
+
+      - name: Create and Sign the APK
+        run: msbuild Wlappa\AndroidClient\AndroidClient.csproj /t:SignAndroidPackage /p:Configuration=Release /p:OutputPath=bin\Release\
+
+      - name: Upload artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: club.wlappa.Wlappa.apk
+          path: Wlappa\AndroidClient\bin\Release\club.wlappa.Wlappa.apk 
