@@ -21,10 +21,10 @@ jobs:
         run: msbuild ./Wlappa.sln /restore /p:Configuration=Release
 
       - name: Create and Sign the APK
-        run: msbuild Wlappa\AndroidClient\AndroidClient.csproj /t:SignAndroidPackage /p:Configuration=Release /p:OutputPath=bin\Release\
+        run: msbuild AndroidClient\AndroidClient.csproj /t:SignAndroidPackage /p:Configuration=Release /p:OutputPath=bin\Release\
 
       - name: Upload artifact
         uses: actions/upload-artifact@v2
         with:
           name: club.wlappa.Wlappa.apk
-          path: Wlappa\AndroidClient\bin\Release\club.wlappa.Wlappa.apk 
+          path: AndroidClient\bin\Release\club.wlappa.Wlappa.apk 
