@@ -24,7 +24,7 @@ jobs:
     - name: Publish
       run: |
         mkdir ./Server_published_release
-        dotnet publish Server --configuration Release -o ./Server_published_release
+        dotnet publish Server -r linux-arm64 --configuration Release -o ./Server_published_release
     - name: Install SSH key
       uses: shimataro/ssh-key-action@v2.0.2
       with:
