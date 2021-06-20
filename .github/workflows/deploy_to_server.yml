@@ -32,8 +32,8 @@ jobs:
         known_hosts: ${{ secrets.KNOWN_HOSTS }}
     - name: Rsync Release to server
       run: |
-        ssh $${{ secrets.SSH_USER }}}@$${{ secrets.SSH_HOST }} mkdir -p ~/Wlappa/Published_release
-        rsync -r ./Server_published_release $${{ secrets.SSH_USER }}@$${{ secrets.SSH_HOST }}:~/Wlappa/Published_release
+        ssh ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }} mkdir -p ~/Wlappa/Published_release
+        rsync -r ./Server_published_release ${{ secrets.SSH_USER }}@${{ secrets.SSH_HOST }}:~/Wlappa/Published_release
         
       
     
